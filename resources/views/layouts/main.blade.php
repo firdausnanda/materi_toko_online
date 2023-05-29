@@ -34,6 +34,10 @@
                         <a class="nav-link {{ request()->url() == url('/customer') ? 'active' : '' }}"
                             href="{{ url('/customer') }}">Pelanggan</a>
                     </li>                        
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->url() == url('/modal/customer') ? 'active' : '' }}"
+                            href="{{ url('/modal/customer') }}">Pelanggan (Modal)</a>
+                    </li>                        
                     @endguest
                 </ul>
             </div>
@@ -57,6 +61,8 @@
     </div>
 
     <script src="{{ asset('vendor/bootstrap/bootstrap.bundle.min.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    @yield('script')
 </body>
 
 </html>
