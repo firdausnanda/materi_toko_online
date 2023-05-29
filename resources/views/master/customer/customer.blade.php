@@ -10,7 +10,7 @@
                 <tr>
                     <th scope="col">No.</th>
                     <th scope="col">Nama Customer</th>
-                    <th scope="col">Aksi</th>
+                    <th scope="col" class="text-center">Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -27,8 +27,8 @@
                                 -
                             @endif
                         </td>
-                        <td>
-                         <a href="/customer-edit/{{ $c->id }}" class="btn btn-primary">Edit</a><br>
+                        <td class="text-center">
+                         <a href="/customer-edit/{{ $c->id }}" class="btn btn-primary">Edit</a>
                          <a href="/customer-delete/{{ $c->id }}}" class="btn btn-danger">Delete</a>
                         </td>
                     </tr>

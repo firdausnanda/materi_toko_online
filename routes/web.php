@@ -2,7 +2,10 @@
 
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ItemController;
-use App\Http\Controllers\master\ProdukController;
+use App\Http\Controllers\LandingController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,9 +19,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 // Practice Route
 
@@ -48,14 +51,27 @@ Route::get('/conflict/{nama}', function($namaitem) {
 
 // View
 
+// Route Home
+Route::get('/', [LandingController::class, 'index']);
+
 // Route Produk
-Route::get('/produk', [ProdukController::class, 'index']);
-Route::get('/produklist', [ProdukController::class, 'productlist']);
+Route::get('/produk', [ProdukController::class, 'index'])->middleware('auth');
+Route::get('/produk-create', [ProdukController::class, 'create'])->middleware('auth');
+Route::post('/produk-store', [ProdukController::class, 'store'])->middleware('auth');
 
 // Route Customer
-Route::get('/customer', [CustomerController::class, 'index']);
-Route::get('/customer-create', [CustomerController::class, 'create']);
-Route::post('/customer-store', [CustomerController::class, 'store']);
-Route::get('/customer-edit/{id}', [CustomerController::class, 'edit']);
-Route::put('/customer-update', [CustomerController::class, 'update']);
-Route::get('/customer-delete/{id}', [CustomerController::class, 'delete']);
+Route::get('/customer', [CustomerController::class, 'index'])->middleware('auth');
+Route::get('/customer-create', [CustomerController::class, 'create'])->middleware('auth');
+Route::post('/customer-store', [CustomerController::class, 'store'])->middleware('auth');
+Route::get('/customer-edit/{id}', [CustomerController::class, 'edit'])->middleware('auth');
+Route::put('/customer-update', [CustomerController::class, 'update'])->middleware('auth');
+Route::get('/customer-delete/{id}', [CustomerController::class, 'delete'])->middleware('auth');
+
+// Route Login
+Route::get('/login', [LoginController::class, 'index']);
+Route::post('/login', [LoginController::class, 'authenticate']);
+Route::post('/logout', [LoginController::class, 'logout']);
+
+// Route Registrasi
+Route::get('/register', [RegisterController::class, 'index']);
+Route::post('/register', [RegisterController::class, 'store']);

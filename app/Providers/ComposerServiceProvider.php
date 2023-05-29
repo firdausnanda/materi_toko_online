@@ -24,21 +24,18 @@ class ComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $nama = [
-            'laptop', 
-            'pc', 
-            'hp', 
-            'flashdisk', 
-            'mouse'
-        ];
+        // $nama = [
+        //     'laptop', 
+        //     'pc', 
+        //     'hp', 
+        //     'flashdisk', 
+        //     'mouse'
+        // ];
 
-        View::composer([
-            'master.product', 
-            'master.productlist',
-            'master.pelanggan',
-            'master.merk'
-        ], function($view) use ($nama) {
-            $view->with('nama', $nama);
-        });
+        // View::composer([
+        //     'master.product.product', 
+        // ], function($view) use ($nama) {
+        //     $view->with('nama', $nama);
+        // });
     }
 }

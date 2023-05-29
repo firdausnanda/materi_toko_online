@@ -10,15 +10,12 @@ class CustomerController extends Controller
     public function index()
     {
         $customer = Customer::with('order')->get();
-
-        // dd($customer);
-
-        return view('master.customer', compact('customer'));
+        return view('master.customer.customer', compact('customer'));
     }
 
     public function create()
     {
-        return view('master.customer_create');
+        return view('master.customer.customer_create');
     }
 
     public function store(Request $request)
@@ -35,7 +32,7 @@ class CustomerController extends Controller
     public function edit($id)
     {
         $customer = Customer::where('id', $id)->first();
-        return view('master.customer_edit', compact('customer'));
+        return view('master.customer.customer_edit', compact('customer'));
     }
 
     public function update(Request $request)

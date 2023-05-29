@@ -1,1 +1,0 @@
-Nokia, Samsung, Apple

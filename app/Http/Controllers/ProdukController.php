@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\master;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Produk;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProdukController extends Controller
 {
@@ -14,20 +16,9 @@ class ProdukController extends Controller
      */
     public function index()
     {
-        $nama = [
-            'laptop', 
-            'pc', 
-            'hp', 
-            'flashdisk', 
-            'mouse'
-        ];
+        $produk = Produk::all();
 
-        return view('master.product');
-    }
-
-    public function productlist()
-    {
-        return view('master.productlist');
+        return view('master.product.product', compact('produk'));
     }
 
     /**
@@ -37,7 +28,7 @@ class ProdukController extends Controller
      */
     public function create()
     {
-        //
+        return view('master.product.product_create');
     }
 
     /**
@@ -48,7 +39,21 @@ class ProdukController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
+        if ($request->hasFile('file')) {
+            $name = $request->file('file');
+            $fileName = 'Produk_' . time() . '.' . $name->getClientOriginalExtension();
+            $path = Storage::putFileAs('public/gambar', $request->file('file'), $fileName);
+        }
+
+        Produk::create([
+            'nama' => $request->nama,
+            'deskripsi' => $request->deskripsi,
+            'harga' => $request->harga,
+            'file' => $fileName,
+        ]);
+
+        return redirect('/produk')->with('Sukses!', 'Data Berhasil Disimpan');
     }
 
     /**
