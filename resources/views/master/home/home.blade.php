@@ -3,17 +3,20 @@
 @section('content')
     <div id="carouselExampleControls" class="carousel slide mb-4" data-bs-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="https://seon.co.id/wp-content/uploads/2020/07/4-Cara-Membuat-Toko-Online-Gratis-untuk-Pemula.jpg"
-                    class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="https://whello.id/wp-content/uploads/2020/04/10-Fitur-Penting-yang-Wajib-Dimiliki-Oleh-Website-Toko-Online.jpg"
-                    class="d-block w-100" alt="...">
-            </div>
+            @forelse ($product as $p)
+                <div class="carousel-item {{ $loop->iteration == 1 ? 'active' : '' }}">
+                    <img src="{{ asset('storage/gambar/' . $p->file) }}"
+                        class="d-block" style="height: 600px;" alt="...">
+                </div>
+            @empty
+                <div class="carousel-item active">
+                    <img src="https://seon.co.id/wp-content/uploads/2020/07/4-Cara-Membuat-Toko-Online-Gratis-untuk-Pemula.jpg"
+                        class="d-block w-100" alt="...">
+                </div>
+            @endforelse
             <div class="carousel-item">
                 <img src="https://www.masterseo.id/wp-content/uploads/2019/05/Membuat-Toko-Online-Profesional-1.jpg"
-                    class="d-block w-100" alt="...">
+                    class="d-block w-100" style="height: 600px;" alt="...">
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">

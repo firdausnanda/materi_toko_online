@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Produk;
 use Illuminate\Http\Request;
 
 class LandingController extends Controller
 {
     public function index()
     {
-        return view('master.home.home');
+        $product = Produk::limit(3)->get();
+
+        return view('master.home.home', compact('product'));
     }
 }
