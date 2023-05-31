@@ -7,6 +7,12 @@
         </div>
     @endif
 
+    @error('email')
+        <div class="alert alert-primary mb-3 m-auto" style="width: 32rem;" role="alert">
+            {{ $errors }}
+        </div>
+    @enderror
+
     <div class="card m-auto" style="width: 32rem;">
         <div class="card-body">
             <h4 class="card-title">Login</h4>
@@ -14,8 +20,8 @@
                 @csrf
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Email address</label>
-                    <input type="email" name="email" class="form-control" id="exampleInputEmail1" value="{{ old('email') }}" aria-describedby="emailHelp"
-                        autofocus>
+                    <input type="email" name="email" class="form-control" id="exampleInputEmail1"
+                        value="{{ old('email') }}" aria-describedby="emailHelp" autofocus>
                     <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                 </div>
                 <div class="mb-3">

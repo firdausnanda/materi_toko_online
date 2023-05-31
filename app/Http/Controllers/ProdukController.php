@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Produk;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class ProdukController extends Controller
 {
@@ -39,6 +40,19 @@ class ProdukController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'nama' => 'required|max:255',
+            'deskripsi' => 'required',
+            'harga' => 'integer',
+            'file' => 'mimes:jpeg,jpg,png',
+        ]);
+ 
+        if ($validator->fails()) {
+            return back()
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
         // dd($request->all());
         if ($request->hasFile('file')) {
             $name = $request->file('file');
