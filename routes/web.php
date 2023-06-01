@@ -59,6 +59,9 @@ Route::get('/', [LandingController::class, 'index']);
 Route::get('/produk', [ProdukController::class, 'index'])->middleware('auth');
 Route::get('/produk-create', [ProdukController::class, 'create'])->middleware('auth');
 Route::post('/produk-store', [ProdukController::class, 'store'])->middleware('auth');
+Route::put('/produk-update', [ProdukController::class, 'update'])->middleware('auth');
+Route::get('/produk-edit/{id}', [ProdukController::class, 'edit'])->middleware('auth');
+Route::get('/produk-delete/{id}', [ProdukController::class, 'destroy'])->middleware('auth');
 
 // Route Customer
 Route::get('/customer', [CustomerController::class, 'index'])->middleware('auth');

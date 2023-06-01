@@ -18,7 +18,7 @@
                     <th scope="col">No.</th>
                     <th scope="col">Nama Barang</th>
                     <th scope="col" class="text-center">Gambar</th>
-                    <th scope="col">Aksi</th>
+                    <th scope="col" class="text-center">Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -27,11 +27,14 @@
                         <td scope="row">{{ $loop->iteration }}.</td>
                         <td>{{ $n->nama }}</td>
                         <td class="text-center"><img style="height: 50px; width: 50px;" src="{{ asset('storage/gambar/' . $n->file) }}" alt=""></td>
-                        <td>-</td>
+                        <td class="text-center">
+                            <a href="/produk-edit/{{ $n->id }}" class="btn btn-primary">Edit</a>
+                            <a href="/produk-delete/{{ $n->id }}}" class="btn btn-danger">Delete</a>
+                        </td>
                     </tr>
                 @empty
                     <tr>
-                        <td class="text-center" colspan="3">Data Tidak Ada</td>
+                    <td class="text-center" colspan="4">Data Tidak Ada</td>
                     </tr>
                 @endforelse
             </tbody>

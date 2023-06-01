@@ -3,6 +3,12 @@
 @section('content')
     <h1>Data Customer</h1>
 
+    @if (session()->has('sukses'))
+        <div class="alert alert-primary mb-3" role="alert">
+            {{ session('sukses') }}
+        </div>
+    @endif
+
     <div class="table-responsive">
       <a class="btn btn-primary" href="/customer-create">Tambah Data</a>
         <table class="table table-striped">
