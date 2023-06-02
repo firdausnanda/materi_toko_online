@@ -17,7 +17,8 @@
         <div class="mb-2">
             <label for="">Nama</label>
             <input type="hidden" name="id" value="{{ $produk->id }}" class="form-control">
-            <input type="text" name="nama" value="{{ $produk->nama }}" class="form-control {{ isset($errors->messages()['nama']) ? 'is-invalid' : '' }}">
+            <input type="text" name="nama" value="{{ $produk->nama }}"
+                class="form-control {{ isset($errors->messages()['nama']) ? 'is-invalid' : '' }}">
             <div id="validationServerUsernameFeedback" class="invalid-feedback">
                 <ol>
                     @if (isset($errors->messages()['nama']))
@@ -30,7 +31,8 @@
         </div>
         <div class="mb-2">
             <label for="">Deskripsi</label>
-            <input type="text" name="deskripsi" value="{{ $produk->deskripsi }}" class="form-control {{ isset($errors->messages()['deskripsi']) ? 'is-invalid' : '' }}">
+            <input type="text" name="deskripsi" value="{{ $produk->deskripsi }}"
+                class="form-control {{ isset($errors->messages()['deskripsi']) ? 'is-invalid' : '' }}">
             <div id="validationServerUsernameFeedback" class="invalid-feedback">
                 <ol>
                     @if (isset($errors->messages()['deskripsi']))
@@ -43,7 +45,8 @@
         </div>
         <div class="mb-2">
             <label for="">Harga</label>
-            <input type="text" name="harga" value="{{ $produk->harga }}" class="form-control {{ isset($errors->messages()['harga']) ? 'is-invalid' : '' }}">
+            <input type="text" name="harga" value="{{ $produk->harga }}"
+                class="form-control {{ isset($errors->messages()['harga']) ? 'is-invalid' : '' }}">
             <div id="validationServerUsernameFeedback" class="invalid-feedback">
                 <ol>
                     @if (isset($errors->messages()['harga']))
@@ -55,7 +58,11 @@
             </div>
         </div>
         <div class="mb-2">
-            <label for="">Gambar</label>
+            <label class="form-label d-block" for="">Gambar</label>
+            @if ($produk->file)
+                <img src="{{ asset('storage/gambar/' . $produk->file) }}" class="rounded-top mb-3"
+                    style="width: 150px; height: 150px;" alt="">
+            @endif
             <input type="file" name="file"
                 class="form-control {{ isset($errors->messages()['file']) ? 'is-invalid' : '' }}">
             <div id="validationServerUsernameFeedback" class="invalid-feedback">
