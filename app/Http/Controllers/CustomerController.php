@@ -54,6 +54,7 @@ class CustomerController extends Controller
             'nama' => 'required|max:255',
             'email' => 'required',
             'alamat' => 'required',
+            'jk' => 'required',
         ]);
  
         if ($validator->fails()) {

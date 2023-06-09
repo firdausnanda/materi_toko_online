@@ -14,7 +14,8 @@ class Customer extends Model
     protected $fillable = [
         'nama',
         'email',
-        'alamat'
+        'alamat',
+        'jk'
     ];
 
     public function order()
