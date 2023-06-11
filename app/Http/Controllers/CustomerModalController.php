@@ -33,6 +33,7 @@ class CustomerModalController extends Controller
             'nama' => 'required|max:255',
             'email' => 'required',
             'alamat' => 'required',
+            'jk' => 'required',
         ]);
  
         if ($validator->fails()) {
@@ -43,6 +44,7 @@ class CustomerModalController extends Controller
             'nama' => $request->nama,
             'email' => $request->email,
             'alamat' => $request->alamat,
+            'jk' => $request->jk,
         ]);
 
         return response()->json([
@@ -66,6 +68,7 @@ class CustomerModalController extends Controller
             'nama' => 'required|max:255',
             'email' => 'required',
             'alamat' => 'required',
+            'jk' => 'required',
         ]);
  
         if ($validator->fails()) {
@@ -76,9 +79,13 @@ class CustomerModalController extends Controller
             'nama' => $request->nama,
             'email' => $request->email,
             'alamat' => $request->alamat,
+            'jk' => $request->jk,
         ]);
 
-        return redirect('/modal/customer');
+        return response()->json([
+            'status' => 'success',
+            'data' => $customer
+        ]);
     }
     
     public function delete($id)

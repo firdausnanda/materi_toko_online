@@ -78,6 +78,16 @@
                                 <strong id="alamat_msg_store"></strong>
                             </span>
                         </div>
+                        <div class="mb-3">
+                            <label for="">Jenis Kelamin</label>
+                            <select name="jk" id="store_jk" class="form-select">
+                                <option value="L">Laki - Laki</option>
+                                <option value="P">Perempuan</option>
+                            </select>
+                            <span class="invalid-feedback">
+                                <strong id="jk_msg_store"></strong>
+                            </span>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -121,6 +131,16 @@
                             <input type="text" name="alamat" id="alamat" class="form-control">
                             <span class="invalid-feedback">
                                 <strong id="alamat_msg"></strong>
+                            </span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="">Jenis Kelamin</label>
+                            <select name="jk" id="jk" class="form-select">
+                                <option value="L">Laki - Laki</option>
+                                <option value="P">Perempuan</option>
+                            </select>
+                            <span class="invalid-feedback">
+                                <strong id="jk_msg"></strong>
                             </span>
                         </div>
                     </div>
@@ -183,6 +203,7 @@
                         $('#nama').val(response.data.nama);
                         $('#email').val(response.data.email);
                         $('#alamat').val(response.data.alamat);
+                        $('#jk').val(response.data.jk).change();
                     }
                 });
             });
